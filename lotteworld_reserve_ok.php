@@ -147,7 +147,12 @@
                     </tbody>
                 </table>
                 <div class="text-end">
-                    <input type="submit" value="예매 확정" class="btn btn-outline-primary col-4 justify-content-end rounded-pill">
+                    <?if($_POST['updatecode']){?>
+                            <input type="hidden" name="updatecode" value="<?=$_POST['updatecode']?>">
+                            <input type="submit" value="예매 수정" class="btn btn-outline-primary col-4 justify-content-end rounded-pill">
+                        <?}else{?>
+                            <input type="submit" value="예매 확정" class="btn btn-outline-primary col-4 justify-content-end rounded-pill">
+                        <?}?>
                 </div>
             </div>
             </form>

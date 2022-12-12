@@ -39,7 +39,35 @@
         $babyprice = (int)$amount['parkbaby'] * (int)$_POST['baby'];
     }
 
-    $sql = "insert into lotteworld_reserve set
+    if($_POST['updatecode']){
+        $sql = "update lotteworld_reserve set
+                date = '".$_POST['date']."',
+                adult = '".$_POST['adult']."',
+                student = '".$_POST['student']."',
+                child = '".$_POST['child']."',
+                baby = '".$_POST['baby']."',
+                ticket = '".$_POST['ticket']."',
+                sale_item = '".$sale['title']."',
+                salecode = '".$_POST['salecode']."',
+                adult_price = '".$adultprice."',
+                student_price = '".$studentprice."',
+                child_price = '".$childprice."',
+                baby_price = '".$babyprice."',
+                sale_price = '".$saleprice."',
+                total_price = '".$finalprice."',
+                reserve_userid = '".$user['userid']."',
+                reserve_username = '".$user['username']."' 
+                where reservecode = '".$_POST['updatecode']."'
+            ";
+            $query = $conn->query($sql);  
+            ?>
+                <script>
+                alert('예매내용이 수정 되었습니다.');
+                location.href="lotteworld_reserve_confirm.php?reservecode=<?=$_POST['updatecode']?>";
+                </script>
+            <?
+    }else{
+        $sql = "insert into lotteworld_reserve set
                 reservecode = '".$reservecode."',
                 date = '".$_POST['date']."',
                 adult = '".$_POST['adult']."',
@@ -59,10 +87,10 @@
                 reserve_username = '".$user['username']."',
                 regdate = '".$regdate."'
             ";
-    $query = $conn->query($sql);        
-?>
-
-<script>
-    alert('예매가 완료되었습니다.');
-    location.href="lotteworld_reserve_confirm.php";
-</script>
+            $query = $conn->query($sql);  
+            ?>
+            <script>
+                alert('예매가 완료되었습니다.');
+                location.href="lotteworld_reserve_confirm.php?userid=<?=$user['userid']?>";
+            </script>
+    <?}?>

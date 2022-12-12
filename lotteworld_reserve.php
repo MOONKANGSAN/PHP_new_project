@@ -42,6 +42,10 @@
             $sql = "select * from lotteworld_amount";
             $query = $conn->query($sql);
             $row = mysqli_fetch_array($query);
+
+            $sql = "select * from lotteworld_reserve where reservecode = '".$_GET['reservecode']."'";
+            $query = $conn->query($sql);
+            $reserve=mysqli_fetch_array($query);
             ?>
         <div class="container col-9 my-3">
             <div class="border-bottom text-start">
@@ -57,19 +61,19 @@
                     <tbody>
                         <tr>
                             <td class="align-middle text-center border-end" style="width:10%;">방문일자</td>
-                            <td colspan=3><input type="text" id="datepicker" name="date"  style="width:40%" class="form-control rounded-0"></td>
+                            <td colspan=3><input type="text" id="datepicker" name="date"  style="width:40%" class="form-control rounded-0" value="<?=$reserve['date']?>" autocomplete="off"></td>
                         </tr>
                         <tr>
                             <td class="align-middle text-center border-end border-start" style="width:20%">어른</td>
-                            <td class="border-end"><input type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" max=10 min=0 placeholder="0" name="adult" class="form-control border-0"></td>
-                            <td class="align-middle text-center border-end" style="width:20%">청소년</td>
-                            <td class="border-end"><input type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" max=10 min=0 placeholder="0" name="student" class="form-control border-0"></td>
+                            <td class="border-end"><input type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" max=10 min=0 placeholder="0" name="adult" class="form-control border-0" value="<?=$reserve['adult']?>"></td>
+                            <td class="align-middle text-center border-end" style="width:20%" >청소년</td>
+                            <td class="border-end"><input type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" max=10 min=0 placeholder="0" name="student" class="form-control border-0" value="<?=$reserve['student']?>"></td>
                         </tr>
                         <tr>
                             <td class="align-middle text-center border-end border-start" style="width:20%">어린이</td>
-                            <td class="border-end"><input type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" max=10 min=0 placeholder="0" name="child" class="form-control border-0"></td>
-                            <td class="align-middle text-center border-end" style="width:20%">베이비</td>
-                            <td class="border-end"><input type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" max=10 min=0 placeholder="0" name="baby" class="form-control border-0"></td>
+                            <td class="border-end"><input type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" max=10 min=0 placeholder="0" name="child" class="form-control border-0" value="<?=$reserve['child']?>"></td>
+                            <td class="align-middle text-center border-end" style="width:20%" >베이비</td>
+                            <td class="border-end"><input type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" max=10 min=0 placeholder="0" name="baby" class="form-control border-0" value="<?=$reserve['baby']?>"></td>
                         </tr>
                         <tr>
                             <td class="align-middle text-center border-end border-start" colspan=4 style="width:20%;">
@@ -151,14 +155,34 @@
                         <tr>
                             <td class="align-middle text-center border-end" style="width:10%;">티켓 분류</td>
                             <td colspan=3>
-                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width:60%">
-                                    <input type="radio" class="btn-check" name="btnradio" value="day" id="btnradio1" autocomplete="off" checked>
-                                    <label class="btn btn-outline-primary" for="btnradio1">Day</label>
-                                    <input type="radio" class="btn-check" name="btnradio" value="after4" id="btnradio2" autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="btnradio2">After4</label>
-                                    <input type="radio" class="btn-check" name="btnradio" value="park" id="btnradio3" autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="btnradio3">파크 입장권</label>
-                                </div>
+                                <? if($reserve['ticket']=="day"||$reserve['ticket']==""){?>
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width:60%">
+                                        <input type="radio" class="btn-check" name="btnradio" value="day" id="btnradio1" autocomplete="off" checked>
+                                        <label class="btn btn-outline-primary" for="btnradio1">Day</label>
+                                        <input type="radio" class="btn-check" name="btnradio" value="after4" id="btnradio2" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio2">After4</label>
+                                        <input type="radio" class="btn-check" name="btnradio" value="park" id="btnradio3" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio3">파크 입장권</label>
+                                    </div>
+                                <?}elseif($reserve['ticket']=="after4"){?>
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width:60%">
+                                        <input type="radio" class="btn-check" name="btnradio" value="day" id="btnradio1" autocomplete="off" >
+                                        <label class="btn btn-outline-primary" for="btnradio1">Day</label>
+                                        <input type="radio" class="btn-check" name="btnradio" value="after4" id="btnradio2" autocomplete="off" checked>
+                                        <label class="btn btn-outline-primary" for="btnradio2">After4</label>
+                                        <input type="radio" class="btn-check" name="btnradio" value="park" id="btnradio3" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio3">파크 입장권</label>
+                                    </div>
+                                    <?}elseif($reserve['ticket']=="park"){?>
+                                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width:60%">
+                                            <input type="radio" class="btn-check" name="btnradio" value="day" id="btnradio1" autocomplete="off">
+                                            <label class="btn btn-outline-primary" for="btnradio1">Day</label>
+                                            <input type="radio" class="btn-check" name="btnradio" value="after4" id="btnradio2" autocomplete="off">
+                                            <label class="btn btn-outline-primary" for="btnradio2">After4</label>
+                                            <input type="radio" class="btn-check" name="btnradio" value="park" id="btnradio3" autocomplete="off" checked>
+                                            <label class="btn btn-outline-primary" for="btnradio3">파크 입장권</label>
+                                        </div>
+                                <?}?>
                             </td>
                         </tr>
                         <tr>
@@ -188,7 +212,12 @@
                     </tbody>
                 </table>
                 <div class="text-end">
-                    <input type="submit" value="예매내역 확인" class="btn btn-outline-primary col-4 justify-content-end rounded-pill">
+                    <?if($_GET['reservecode']){?>
+                        <input type="hidden" name="updatecode" value="<?=$reserve['reservecode']?>">
+                        <input type="submit" value="예매내역 확인" class="btn btn-outline-primary col-4 justify-content-end rounded-pill">
+                    <?}else{?>
+                        <input type="submit" value="예매내역 확인" class="btn btn-outline-primary col-4 justify-content-end rounded-pill">
+                    <?}?>
                 </div>
             </div>
             </form>
