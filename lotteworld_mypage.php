@@ -32,6 +32,9 @@
             color:#5a07e0;
             box-shadow: 1px 1px 20px #ddd;
         }
+        a:visited{
+            color:inherit;
+        }
         </style>
     </head>
     <body>
@@ -40,6 +43,8 @@
         include "lotteworld_db.php";
         include "lotteworld_topmenu.php";
         
+        session_start();
+
             $sql = "select * from lotte_userinfo where userid = '".$_SESSION['userid']."'";
             $query = $conn->query($sql);
             $user = mysqli_fetch_array($query);
@@ -91,14 +96,16 @@
                 <div class="card mx-2 p-2" style="width:18rem;height:24rem;">
                     <div class="card-body">
                         <h5 class="card-title">나의 예매내역</h5>
-                        <ul>
-                            <li class="my-1">ID : <?=$user['userid']?></li>
-                            <li class="my-1">Name : <?=$user['username']?></li>
-                            <li liclass="my-1">Email : <?=$user['Email']?></li>
-                            <li class="my-1">P.H. : <?=$phone1?>-<?=$phone2?>-<?=$phone3?></li>
+                        <ul class="list-group">
+                            <? 
+                                $sql = "select * from lotteworld_reserve where reserve_userid = '".$_SESSION['userid']."' and conf = 0 and date >= $year  order by idx desc limit 6";
+                                $query = $conn->query($sql);
+                                for($i=0;$res=mysqli_fetch_array($query);$i++){?>
+                                        <li onclick="location.href='lotteworld_reserve_confirm.php?reservecode=<?=$res['reservecode']?>'" class="list-group-item"><?=$res['date']?></li>
+                                <?}?>
                         </ul>
                     </div>
-                    <a href="lotteworld-mypage_qna.php" class="btn btn-outline-success justify-content-center">예매내역 전체 보기</a>
+                    <a href="lotteworld_mypage_reserve.php" class="btn btn-outline-success justify-content-center">예매내역 전체 보기</a>
                 </div>
                 
             </div>

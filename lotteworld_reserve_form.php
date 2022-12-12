@@ -85,7 +85,8 @@
                 total_price = '".$finalprice."',
                 reserve_userid = '".$user['userid']."',
                 reserve_username = '".$user['username']."',
-                regdate = '".$regdate."'
+                regdate = '".$regdate."',
+                conf = 0
             ";
             $query = $conn->query($sql);  
             ?>

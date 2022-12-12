@@ -81,7 +81,7 @@
             </button>
             <div class="collapse" id="dashboard-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">예매 내역</a></li>
+                <li><a href="reserve/lotteworld_admin_reserve.php" class="link-dark d-inline-flex text-decoration-none rounded">예매 내역</a></li>
                 <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Weekly</a></li>
               </ul>
             </div>
