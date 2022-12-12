@@ -2,6 +2,10 @@
     <?
     include "lotteworld_db.php";
     session_start();
+
+    $sql = "select * from lotte_userinfo where userid = '".$_SESSION['userid']."'";
+    $query = $conn->query($sql);
+    $user = mysqli_fetch_array($query);
     ?>
     <style>
         i{
@@ -29,19 +33,29 @@
         <li><a href="lotteworld_notice.php" class="nav-link px-2 link-dark">공지사항</a></li>
       </ul>
       <?
-        if(isset($_SESSION['userid'])){?>
-        <ul class="nav col-3 col-md-3 justify-content-end text-end mx-4">
-        <li class="mx-2"><?=$_SESSION['userid']?>님 환영합니다.</li>
+        if(isset($_SESSION['userid'])){
+          if($user['admin']==1){?>
+          <ul class="nav col-3 col-md-3 justify-content-end text-end mx-4 align-middle align-items-center">
+            <li><img src="<?=$user['savezone'].$user['profile']?>" class="rounded-circle" style="width:35px;height:35px;" alt="" onclick="location.href='lotteworld_mypage.php'"></li>
+            <li class="mx-2"><?=$user['username']?>님</li>
             <li class="" >|</li>
             <li class="mx-2"><a href="lotteworld_logout.php">LOGOUT</a></li>
             <li class="" >|</li>
-            <li class="mx-2"><a href="admin/lotteworld_admin_index.php" style="color:blue">ADMIN</a></li> 
+            <li class="mx-2 fs-6"><a href="admin/lotteworld_admin_index.php" style="color:blue;font-size:16px;"><span class="material-symbols-outlined">admin_panel_settings</span></a></li> 
           </ul>
-        <?}else{?>
-          <ul class="nav col-3 col-md-3 justify-content-end text-end mx-4">
-            <li class="mx-2"><a href="lotteworld_login.php">LOGIN</a></li>
+        <?}elseif($user['admin']!=1){?>
+          <ul class="nav col-3 col-md-3 justify-content-end text-end mx-4 align-middle align-items-center">
+            <li><img src="<?=$user['savezone'].$user['profile']?>" class="rounded-circle" style="width:45px;height:45px;" alt="" onclick="location.href='lotteworld_mypage.php'"></li>
+            <li class="mx-2"><?=$user['username']?>님</li>
             <li class="" >|</li>
-            <li class="mx-2"><a href="lotteworld_signup.php">SIGNUP</a></li> 
+            <li class="mx-2"><a href="lotteworld_logout.php">LOGOUT</a></li>
           </ul>
+            <?}
+              }else{?>
+              <ul class="nav col-3 col-md-3 justify-content-end text-end mx-4 align-middle align-items-center">
+                <li class="mx-2"><a href="lotteworld_login.php">LOGIN</a></li>
+                <li class="" >|</li>
+                <li class="mx-2"><a href="lotteworld_signup.php">SIGNUP</a></li> 
+              </ul>
         <?}?>  
     </header>
