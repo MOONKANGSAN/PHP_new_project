@@ -15,6 +15,8 @@
                   password = '".$hash."',
                   usercode = '".$datecode."',
                   username = '".$_POST['username']."',
+                  profile = 'basic_1.jpg',
+                  savezone = './profile_photo/',
                   securityNumber = '".$securityNum."',
                   phoneNumber = '".$phoneNum."',
                   male = '".$_POST['sex']."',
@@ -24,11 +26,9 @@
                   Email   = '".$email."'
                   ";
     $query = $conn->query($sql);
-
 ?>
-
 <script>
     alert('회원가입이 완료됐습니다.');
-    opener.location.href('lotteworld_main.php');
+    opener.location.href="lotteworld_main.php";
     window.close();
 </script>

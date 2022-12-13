@@ -92,9 +92,9 @@
             </button>
             <div class="collapse" id="orders-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">회원 리스트</a></li>
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">관리자 권한부여</a></li>
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">타임라인</a></li>
+                <li><a href="user_dir/lotteworld_userlist.php" class="link-dark d-inline-flex text-decoration-none rounded">회원 리스트</a></li>
+                <li><a href="user_dir/lotteworld_adminplus.php" class="link-dark d-inline-flex text-decoration-none rounded">관리자 권한부여</a></li>
+                <!-- <li><a href="user_dir/lottewrold_" class="link-dark d-inline-flex text-decoration-none rounded">타임라인</a></li> -->
               </ul>
             </div>
           </li>

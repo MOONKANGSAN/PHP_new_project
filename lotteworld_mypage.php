@@ -60,8 +60,8 @@
             <h3 class="text-center fw-bold mb-2">마이페이지</h3>
             <hr style="color:black;">
             <div class="btn-group container justify-content-center text-center text-primary">
-                <a href="lotteworld_qna_write.php" class="btn btn-outline-primary" aria-current="page">QnA 작성</a>
-                <a href="lotteworld_reserve.php" class="btn btn-outline-primary" aria-current="page">지금 예매하기</a>
+                <button onclick="location.href='lotteworld_qna_write.php'" class="btn btn-outline-primary" aria-current="page">QnA 작성</button>
+                <button onclick="location.href='lotteworld_reserve.php'" class="btn btn-outline-primary" aria-current="page">지금 예매하기</button>
             </div>
             <br><br>
             <!-- <h5 class="text-center mb-4 pb-3 text-secondary">이===</h5> -->
@@ -79,7 +79,8 @@
                             <img class="rounded-circle mt-1 border border-secondary" style="width:90px;height:90px;" src="<?=$user['savezone'].$user['profile']?>" alt="">
                         </div>
                     </div>
-                    <a href="lotteworld-mypage_infoup.php" class="btn btn-outline-success justify-content-center">회원정보 수정하기</a>
+                    <!-- <form action="lotteworld_mypage_infocn"></form> -->
+                    <button onclick="openPopup()" class="btn btn-outline-success justify-content-center">회원정보 수정하기</button>
                 </div>
                 <div class="card mx-2 p-2" style="width:18rem;height:24rem;">
                     <div class="card-body">
@@ -91,7 +92,7 @@
                             <li class="my-1">P.H. : <?=$phone1?>-<?=$phone2?>-<?=$phone3?></li>
                         </ul>
                     </div>
-                    <a href="lotteworld-mypage_qna.php" class="btn btn-outline-success justify-content-center">내가 쓴 QnA 확인</a>
+                    <button onclick="location.href='lotteworld_mypage_qna.php'" class="btn btn-outline-success justify-content-center">내가 쓴 QnA 확인</button>
                 </div>
                 <div class="card mx-2 p-2" style="width:18rem;height:24rem;">
                     <div class="card-body">
@@ -105,7 +106,7 @@
                                 <?}?>
                         </ul>
                     </div>
-                    <a href="lotteworld_mypage_reserve.php" class="btn btn-outline-success justify-content-center">예매내역 전체 보기</a>
+                    <button onclick="location.href='lotteworld_mypage_reserve.php'" class="btn btn-outline-success justify-content-center">예매내역 전체 보기</button>
                 </div>
                 
             </div>
@@ -117,5 +118,17 @@
        ?>
 <!--기업정보-->        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        <script>
+        function openPopup() {
+            var _width = '650';
+            var _height = '700';
+            // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+            var _left = Math.ceil(( window.screen.width - _width )/2);
+            var _top = Math.ceil(( window.screen.height - _height )/3); 
+
+            window.open('lotteworld_mypage_infoup.php?userid=<?=$_SESSION['userid']?>', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+            }
+            //이벤트 클릭을 통한 함수 호출
+        </script>
     </body>
 </html>
