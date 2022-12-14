@@ -42,7 +42,6 @@
         include "lotteworld_visit.php";
         include "lotteworld_db.php";
         include "lotteworld_topmenu.php";
-        
         session_start();
 
             $sql = "select * from lotte_userinfo where userid = '".$_SESSION['userid']."'";
@@ -85,11 +84,21 @@
                 <div class="card mx-2 p-2" style="width:18rem;height:24rem;">
                     <div class="card-body">
                         <h5 class="card-title">내가 작성한 QnA</h5>
-                        <ul>
-                            <li class="my-1">ID : <?=$user['userid']?></li>
-                            <li class="my-1">Name : <?=$user['username']?></li>
-                            <li liclass="my-1">Email : <?=$user['Email']?></li>
-                            <li class="my-1">P.H. : <?=$phone1?>-<?=$phone2?>-<?=$phone3?></li>
+                        <ul class="list-group">
+                            <? 
+                                $sql = "select * from lotteworld_qna where userid = '".$_SESSION['userid']."' order by idx desc limit 6";
+                                $query = $conn->query($sql);
+                                for($i=0;$qna=mysqli_fetch_array($query);$i++){?>
+                                        <li onclick="location.href='lotteworld_qna_view.php?idx=<?=$qna['idx']?>'" class="list-group-item">
+                                            <? 
+                                            $qna_title = $qna['title'];
+                                            if(strlen($qna_title)>20){?>
+                                                <?=iconv_substr($qna_title,0,20)?>...     
+                                            <?}else{?>
+                                                <?=$qna_title?>
+                                            <?}?>
+                                        </li>
+                                <?}?>
                         </ul>
                     </div>
                     <button onclick="location.href='lotteworld_mypage_qna.php'" class="btn btn-outline-success justify-content-center">내가 쓴 QnA 확인</button>

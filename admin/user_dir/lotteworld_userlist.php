@@ -39,12 +39,12 @@
             ?>
             <div class="col-10 mt-3">
                 <h4 class="mb-3 pb-2 border-bottom border-2 col-10">관리자 페이지</h4>
-                <h5 class="mb-4 pb-2 col-10">회원 리스트</h5>
-                <div class="col-11">
+                <h5 class="mb-1 pb-2 col-10">회원 리스트</h5>
+                <div class="col-9">
                     <table class="table table-hover ">
                         <thead class="border-bottom-2 border-secondary">
                             <tr>
-                                <td class="text-center" style="width:10%"></td>
+                                <td class="text-center" style="width:5%"></td>
                                 <td class="text-center" style="width:15%">회원명</td>
                                 <td class="text-center" style="width:20%">회원 아이디</td>
                                 <td class="text-center" style="width:10%">성별</td>
@@ -55,7 +55,7 @@
                         <tbody>
                             <? for($i=0;$row=mysqli_fetch_array($query);$i++){
                                 ?>
-                            <tr onclick="location.href='lotteworld_admin_reserve_view.php?reservecode=<?=$row['reservecode']?>'">
+                            <tr onclick=" window.open('lotteworld_userinfo.php?usercode=<?=$row['usercode']?>', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );">
                                 <td class="text-center"><?=$i+1?></td>
                                 <td class="text-center"><?=$row['username']?></td>
                                 <td><?=$row['userid']?></td>
@@ -81,4 +81,10 @@
             return false;
         }
     } 
+        var _width = '650';
+        var _height = '700';
+        // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+        var _left = Math.ceil(( window.screen.width - _width )/2);
+        var _top = Math.ceil(( window.screen.height - _height )/3); 
+    
 </script>

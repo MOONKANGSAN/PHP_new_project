@@ -62,10 +62,10 @@
       <div class="flex-shrink-0 p-3 bg-white border-end border-2 shadow-sm" style="width:230px;height:1000px">
         <ul class="list-unstyled ps-0">
           <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
             게시글 관리
             </button>
-            <div class="collapse show" id="home-collapse">
+            <div class="collapse" id="home-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li><a href="dashboard/lotteworld_amount.php" class="link-dark d-inline-flex text-decoration-none rounded">가격정보</a></li>
                 <li><a href="dashboard/lotteworld_sale.php" class="link-dark d-inline-flex text-decoration-none rounded">할인혜택</a></li>

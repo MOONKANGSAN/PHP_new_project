@@ -67,7 +67,7 @@
             <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
             게시글 관리
             </button>
-            <div class="collapse show" id="home-collapse">
+            <div class="collapse" id="home-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">가격정보</a></li>
                 <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">할인혜택</a></li>
@@ -104,7 +104,7 @@
             <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
               FAQs
             </button>
-            <div class="collapse" id="account-collapse">
+            <div class="collapse show" id="account-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">FAQ 리스트</a></li>
                 <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">QnA 내역</a></li>

@@ -39,7 +39,7 @@
             ?>
             <div class="col-10 mt-3">
                 <h4 class="mb-3 pb-2 border-bottom border-2 col-10">관리자 페이지</h4>
-                <h5 class="mb-4 pb-2 col-10">회원 리스트</h5>
+                <h5 class="mb-1 pb-2 col-10">관리자 권한 부여</h5>
                 <div class="col-9">
                     <table class="table table-hover ">
                         <thead class="border-bottom-2 border-secondary">

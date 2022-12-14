@@ -81,7 +81,7 @@
             <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
               예약 관리
             </button>
-            <div class="collapse" id="dashboard-collapse">
+            <div class="collapse show" id="dashboard-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li><a href="lotteworld_admin_reserve.php" class="link-dark d-inline-flex text-decoration-none rounded">예매 내역</a></li>
                 <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Weekly</a></li>

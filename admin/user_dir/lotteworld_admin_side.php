@@ -65,7 +65,7 @@
             <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
             게시글 관리
             </button>
-            <div class="collapse show" id="home-collapse">
+            <div class="collapse" id="home-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li><a href="../dashboard/lotteworld_amount.php" class="link-dark d-inline-flex text-decoration-none rounded">가격정보</a></li>
                 <li><a href="../dashboard/lotteworld_sale.php" class="link-dark d-inline-flex text-decoration-none rounded">할인혜택</a></li>
@@ -90,11 +90,11 @@
             <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
               회원관리
             </button>
-            <div class="collapse" id="orders-collapse">
+            <div class="collapse show" id="orders-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li><a href="lotteworld_userlist.php" class="link-dark d-inline-flex text-decoration-none rounded">회원 리스트</a></li>
                 <li><a href="lotteworld_adminplus.php" class="link-dark d-inline-flex text-decoration-none rounded">관리자 권한부여</a></li>
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">타임라인</a></li>
+                <!-- <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">타임라인</a></li> -->
               </ul>
             </div>
           </li>
