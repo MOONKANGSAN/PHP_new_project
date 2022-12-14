@@ -81,8 +81,8 @@
                 </table>
             <div class="container col-12 justify-content-center text-center">
             <br><br>
+            </div>
         </div>
-                            </div>
        <? 
        include "lotteworld_footer.php";
        ?>

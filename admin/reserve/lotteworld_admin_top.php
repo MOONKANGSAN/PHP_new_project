@@ -69,8 +69,8 @@
       </ul>
     </div>
   </header>
-  
-
-
+  <?
+   include "lotteworld_admin_common.php";
+?>
 
 

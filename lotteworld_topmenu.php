@@ -1,7 +1,11 @@
 <head>
     <?
-    include "lotteworld_db.php";
-    session_start();
+   $conn = mysqli_connect("localhost","root","autoset","lotteworld");
+   $regdate = date('Y-m-d H:i:s');
+   $datecode = date('YmdHis')."A";
+   $year = date('Y-m-d');
+
+  session_start();
 
     $sql = "select * from lotte_userinfo where userid = '".$_SESSION['userid']."'";
     $query = $conn->query($sql);

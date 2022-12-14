@@ -67,7 +67,40 @@
             </div>
             <div class="container col-12 justify-content-center text-center">
             <br><br>
-        </div>
+            </div>
+            <table class="table table-hover my-4 py-1">
+                <?  
+                    $no = $_GET['idx'];
+                    $sql = "select * from lotteworld_faq where idx < $no order by idx desc limit 1";
+                    $query = $conn->query($sql);
+                    $izun = mysqli_fetch_array($query);
+                    $sql = "select * from lotteworld_faq where idx > $no order by idx asc limit 1";
+                    $query = $conn->query($sql);
+                    $daum = mysqli_fetch_array($query);
+                ?>
+                    <? if(!$daum['idx']){?>
+                        <tr>
+                            <td class="border-bottom-1 mb-2">다음글 ▲</td>
+                            <td class="border-bottom-1 mb-2">다음글이 없습니다.</td>
+                        </tr>
+                    <?}else{?>
+                        <tr onclick="location.href='lotteworld_faq_view.php?idx=<?=$daum['idx']?>'">
+                            <td class="border-bottom-1 mb-2">다음글 ▲</td>
+                            <td class="border-bottom-1 mb-2"><?=$daum['title']?></td>
+                        </tr>
+                    <?}?>
+                    <? if(!$izun['idx']){?>
+                        <tr>
+                            <td class="border-bottom-0 mt-2" >이전글 ▽</td>
+                            <td class="border-bottom-0 mt-2" >이전글이 없습니다.</td>
+                        </tr>
+                    <?}else{?>
+                        <tr onclick="location.href='lotteworld_faq_view.php?idx=<?=$izun['idx']?>'">
+                            <td class="border-bottom-0 mt-2" >이전글 ▽</td>
+                            <td class="border-bottom-0 mt-2" ><?=$izun['title']?></td>
+                        </tr>
+                    <?}?>
+            </table>
         </div>
        <? 
        include "lotteworld_footer.php";

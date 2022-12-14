@@ -100,7 +100,7 @@
             <img  src="./admin/dashboard/peraid_photo/<?=$peraid['place_photo']?>" alt="..." width=700 height=380>
             </div>
             <div class="container col-12 justify-content-center text-center">
-                <a href="lottewrold_peraid.php" class="btn btn-outline-primary fs-6 fw-bold mt-4 justify-content-center col-2 rounded-pill">목록</a>
+                <a href="lottewrold_peraid_list.php" class="btn btn-outline-primary fs-6 fw-bold mt-4 justify-content-center col-2 rounded-pill">목록</a>
             </div><br><br>
         </div>
     

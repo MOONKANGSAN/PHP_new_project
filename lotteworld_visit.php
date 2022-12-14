@@ -1,5 +1,9 @@
 <?php
-    include "lotteworld_db.php";
+    $conn = mysqli_connect("localhost","root","autoset","lotteworld");
+
+	$regdate = date('Y-m-d H:i:s');
+	$datecode = date('YmdHis')."A";
+	$year = date('Y-m-d');
 
 	if(!isset($_SESSION)) { session_start(); } 
 	date_default_timezone_set('Asia/Seoul');

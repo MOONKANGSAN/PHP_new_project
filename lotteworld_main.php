@@ -36,9 +36,14 @@
     </head>
     <body>
             <?php 
+            $conn = mysqli_connect("localhost","root","autoset","lotteworld");
+            $regdate = date('Y-m-d H:i:s');
+            $datecode = date('YmdHis')."A";
+            $year = date('Y-m-d');
+
             include "lotteworld_visit.php";
-            include "lotteworld_db.php";
             include "lotteworld_topmenu.php";
+            
             $sql = "select * from lotteworld_amount";
             $query = $conn->query($sql);
             $amount = mysqli_fetch_array($query);

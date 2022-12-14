@@ -68,9 +68,10 @@
         <li class="nav-item"><a href="../faqs/lotteworld_faq_admin.php" class="nav-link px-2 text-white">FAQs</a></li>
       </ul>
     </div>
-  </header>
-  
-
+</header>
+<?
+  include "lotteworld_admin_common.php";
+?>
 
 
 

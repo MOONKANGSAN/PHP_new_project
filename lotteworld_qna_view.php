@@ -44,6 +44,15 @@
             $query = $conn->query($sql);
             $row = mysqli_fetch_array($query);
 
+            if($row['open']=="open"){
+                if($row['userid']!=$_SESSION['userid']){
+                    echo "<script>
+                        alert('접근 권한이 없습니다.');
+                        history.back();
+                    </script>";
+                }
+            }
+
             if($row['qnaOther']=="sale"){
                 $sale = "할인혜택 관련";
             }elseif($row['qnaOther']=="peraid"){
@@ -106,9 +115,44 @@
             <? if($row['userid']==$_SESSION['userid']&&$row['conf']==0){?>
                 <div class="position-relative">
                     <input type="submit" onclick="chkBtn()" value="QnA 수정" class="position-absolute top-0 end-0 col-2 btn btn-outline-primary">
-                </div>
+                </div><br>
             <?}?>
-        </div><br><br>
+            <table class="table table-hover my-4 py-1">
+                <?  
+                    $no = $_GET['idx'];
+                    $sql = "select * from lotteworld_qna where idx < $no order by idx desc limit 1";
+                    $query = $conn->query($sql);
+                    $izun = mysqli_fetch_array($query);
+                    $sql = "select * from lotteworld_qna where idx > $no order by idx asc limit 1";
+                    $query = $conn->query($sql);
+                    $daum = mysqli_fetch_array($query);
+                ?>
+                    <? if(!$daum['idx']){?>
+                        <tr>
+                            <td class="border-bottom-1 mb-2">다음글 ▲</td>
+                            <td class="border-bottom-1 mb-2">다음글이 없습니다.</td>
+                        </tr>
+                    <?}else{?>
+                        <tr onclick="location.href='lotteworld_qna_view.php?idx=<?=$daum['idx']?>'">
+                            <td class="border-bottom-1 mb-2">다음글 ▲</td>
+                            <td class="border-bottom-1 mb-2"><?=$daum['title']?></td>
+                        </tr>
+                    <?}?>
+                    <? if(!$izun['idx']){?>
+                        <tr>
+                            <td class="border-bottom-0 mt-2" >이전글 ▽</td>
+                            <td class="border-bottom-0 mt-2" >이전글이 없습니다.</td>
+                        </tr>
+                    <?}else{?>
+                        <tr onclick="location.href='lotteworld_qna_view.php?idx=<?=$izun['idx']?>'">
+                            <td class="border-bottom-0 mt-2" >이전글 ▽</td>
+                            <td class="border-bottom-0 mt-2" ><?=$izun['title']?></td>
+                        </tr>
+                    <?}?>
+            </table>
+        </div><br>
+        
+        <br>
        <? 
        include "lotteworld_footer.php";
        ?>
