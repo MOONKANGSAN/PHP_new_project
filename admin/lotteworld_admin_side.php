@@ -104,8 +104,8 @@
             </button>
             <div class="collapse" id="account-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">FAQ 리스트</a></li>
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">QnA 내역</a></li>
+                <li><a href="faqs/lotteworld_faq_admin.php" class="link-dark d-inline-flex text-decoration-none rounded">FAQ 리스트</a></li>
+                <li><a href="faqs/lotteworld_qna_admin.php" class="link-dark d-inline-flex text-decoration-none rounded">QnA 내역</a></li>
               </ul>
             </div>
           </li>

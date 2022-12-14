@@ -48,6 +48,9 @@
             $query = $conn->query($sql);
             $user = mysqli_fetch_array($query);
 
+            $sql = "select count(*) as cnt from lotteworld_qna where conf = 0";
+            $query = $conn->query($sql);
+            $qna = mysqli_fetch_array($query);
             ?>
             <div class="col-10 mt-3 ms-1">
                 <h4 class="mb-3 pb-2 border-bottom border-2 col-10">관리자 페이지</h4>
@@ -75,7 +78,7 @@
                     <div class="card me-3 col-3" style="width:18rem;">
                         <div class="card-body">
                             <h4 class="card-title">처리 안된 QnA</h4>
-                            <p class="card-text" style="font-size:3rem">3개</p>
+                            <p class="card-text" style="font-size:3rem"><?=$qna['cnt']?>개</p>
                             <a href="#" class="btn btn-primary">QnA리스트 조회</a>
                         </div>
                     </div>

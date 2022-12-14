@@ -31,7 +31,7 @@
             include "lotteworld_admin_top.php";
         ?>
         <!--상단 네비게이션 바-->
-        <form action="lotteworld_sale_del.php" method="POST">
+        
         <div class="d-flex justify-content-start">
             <?
             include "lotteworld_admin_side.php";
@@ -39,6 +39,7 @@
             $query = $conn->query($sql);
             
             ?>
+            <form class="col-12" action="lotteworld_sale_del.php" method="POST">
             <div class="col-10 mt-3">
                 <h4 class="mb-3 pb-2 border-bottom border-2 col-10">관리자 페이지</h4>
                 <h5 class="mb-4 pb-2 col-10">할인혜택 정보</h5>
@@ -79,8 +80,9 @@
                     </div>
                 </div>
             </div>
+            </form>
         </div>
-        </form>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </body>
 </html>

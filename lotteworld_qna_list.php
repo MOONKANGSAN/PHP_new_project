@@ -51,7 +51,8 @@
                     <i class="bi bi-house-door fs-3"></i>
                     <!-- <span class="material-symbols-outlined fs-4">home</span> -->
                 </a></li>
-                <li class="breadcrumb-item active fs-4" aria-current="page">소통서비스:QnA</li>
+                <li class="breadcrumb-item fs-4" aria-current="page"><a href="lotteworld_service.php">소통서비스</a></li>
+                <li class="breadcrumb-item active fs-4" aria-current="page">QnA</li>
             </ol>
         </nav>   
         <div class="container col-8 justify-content-center align-items-center">

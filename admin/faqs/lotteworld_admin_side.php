@@ -69,11 +69,11 @@
             </button>
             <div class="collapse" id="home-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">가격정보</a></li>
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">할인혜택</a></li>
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공지사항</a></li>
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이벤트 정보</a></li>
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">캐러셀 관리</a></li>
+                <li><a href="../dashboard/lotteworld_amount.php" class="link-dark d-inline-flex text-decoration-none rounded">가격정보</a></li>
+                <li><a href="../dashboard/lotteworld_sale.php" class="link-dark d-inline-flex text-decoration-none rounded">할인혜택</a></li>
+                <li><a href="../dashboard/lotteworld_notice.php" class="link-dark d-inline-flex text-decoration-none rounded">공지사항</a></li>
+                <li><a href="../dashboard/lotteworld_peraid.php" class="link-dark d-inline-flex text-decoration-none rounded">이벤트 정보</a></li>
+                <li><a href="../dashboard/lotteworld_carousel.php" class="link-dark d-inline-flex text-decoration-none rounded">캐러셀 관리</a></li>
               </ul>
             </div>
           </li>
@@ -83,7 +83,7 @@
             </button>
             <div class="collapse" id="dashboard-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">예매 내역</a></li>
+                <li><a href="../reserve/lotteworld_admin_reserve.php" class="link-dark d-inline-flex text-decoration-none rounded">예매 내역</a></li>
                 <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Weekly</a></li>
               </ul>
             </div>
@@ -94,8 +94,8 @@
             </button>
             <div class="collapse" id="orders-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">회원 리스트</a></li>
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">관리자 권한부여</a></li>
+                <li><a href="../user_dir/lotteworld_userlist.php" class="link-dark d-inline-flex text-decoration-none rounded">회원 리스트</a></li>
+                <li><a href="../user_dir/lotteworld_adminplus.php" class="link-dark d-inline-flex text-decoration-none rounded">관리자 권한부여</a></li>
                 <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">타임라인</a></li>
               </ul>
             </div>
@@ -106,8 +106,8 @@
             </button>
             <div class="collapse show" id="account-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">FAQ 리스트</a></li>
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">QnA 내역</a></li>
+                <li><a href="lotteworld_faq_admin.php" class="link-dark d-inline-flex text-decoration-none rounded">FAQ 리스트</a></li>
+                <li><a href="lotteworld_qna_admin.php" class="link-dark d-inline-flex text-decoration-none rounded">QnA 내역</a></li>
               </ul>
             </div>
           </li>

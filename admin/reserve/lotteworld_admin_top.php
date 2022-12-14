@@ -62,10 +62,10 @@
     <div class="d-flex flex-wrap justify-content-between align-items-center py-1">
       <p class="col-md-2 mb-0 text-white border-white" onclick="location.href='../lotteworld_admin_index.php'">LOTTEWORLD | ADMIN</p>
       <ul class="nav col-md-10 justify-content-start">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">이벤트 내역</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">공지사항</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">예매내역</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+        <li class="nav-item"><a href="../dashboard/lotteworld_peraid.php" class="nav-link px-2 text-white">이벤트 내역</a></li>
+        <li class="nav-item"><a href="../dashboard/lotteworld_notice.php" class="nav-link px-2 text-white">공지사항</a></li>
+        <li class="nav-item"><a href="lotteworld_admin_reserve.php" class="nav-link px-2 text-white">예매내역</a></li>
+        <li class="nav-item"><a href="../faqs/lotteworld_faq_admin.php" class="nav-link px-2 text-white">FAQs</a></li>
       </ul>
     </div>
   </header>

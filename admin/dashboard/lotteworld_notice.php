@@ -31,7 +31,7 @@
             include "lotteworld_admin_top.php";
         ?>
         <!--상단 네비게이션 바-->
-        <form action="lotteworld_notice_del.php" method="POST">
+       
         <div class="d-flex justify-content-start">
             <?
             include "lotteworld_admin_side.php";
@@ -39,44 +39,46 @@
             $query = $conn->query($sql);
             
             ?>
-            <div class="col-10 mt-3">
-                <h4 class="mb-3 pb-2 border-bottom border-2 col-10">관리자 페이지</h4>
-                <h5 class="mb-4 pb-2 col-10">공지사항</h5>
-                <div class=" col-9">
-                    <table class="table table-hover text-center">
-                        <thead>
-                            <tr>
-                                <td>No.</td>
-                                <td>타이틀</td>
-                                <td>작성일</td>
-                                <td>작성자</td>
-                                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <? for($i=0;$row=mysqli_fetch_array($query);$i++){?>
+            <form class="col-12" action="lotteworld_notice_del.php" method="POST">
+                <div class="col-10 mt-3">
+                    <h4 class="mb-3 pb-2 border-bottom border-2 col-10">관리자 페이지</h4>
+                    <h5 class="mb-4 pb-2 col-10">공지사항</h5>
+                    <div class= "col-9">
+                        <table class="table table-hover text-center">
+                            <thead>
                                 <tr>
-                                    <td><?=$i+1?></td>
-                                    <td class="text-start" onclick="location.href='lotteworld_notice_write.php?idx=<?=$row['notice_idx']?>'"><?=$row['notice_title']?></td>
-                                    <td onclick="location.href='lotteworld_notice_write.php?idx=<?=$row['notice_idx']?>'"><?=substr($row['regdate'],0,10)?></td>
-                                    <td onclick="location.href='lotteworld_notice_write.php?idx=<?=$row['notice_idx']?>'"><?=$row['user']?></td>
-                                    <td><input class="form-check-input" type="checkbox" name="chk[]" value="<?=$row['notice_idx']?>" id="flexCheckDefault"></td>
+                                    <td>No.</td>
+                                    <td>타이틀</td>
+                                    <td>작성일</td>
+                                    <td>작성자</td>
+                                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
                                 </tr>
-                            <?}?>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-9 row">
-                    <div class="col-6 text-start">
-                        <a class="btn btn-outline-primary rounded-pill fs-6 w-50" onclick="location.href='lotteworld_notice_write.php'">새로운 공지사항</a>    
+                            </thead>
+                            <tbody>
+                                <? for($i=0;$row=mysqli_fetch_array($query);$i++){?>
+                                    <tr>
+                                        <td><?=$i+1?></td>
+                                        <td class="text-start" onclick="location.href='lotteworld_notice_write.php?idx=<?=$row['notice_idx']?>'"><?=$row['notice_title']?></td>
+                                        <td onclick="location.href='lotteworld_notice_write.php?idx=<?=$row['notice_idx']?>'"><?=substr($row['regdate'],0,10)?></td>
+                                        <td onclick="location.href='lotteworld_notice_write.php?idx=<?=$row['notice_idx']?>'"><?=$row['user']?></td>
+                                        <td><input class="form-check-input" type="checkbox" name="chk[]" value="<?=$row['notice_idx']?>" id="flexCheckDefault"></td>
+                                    </tr>
+                                <?}?>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="col-6 text-end">
-                        <input type="submit" class="btn btn-outline-primary rounded-pill fs-6 w-50" onclick="delChk()" value="선택항목 삭제">    
+                    <div class="col-9 row">
+                        <div class="col-6 text-start">
+                            <a class="btn btn-outline-primary rounded-pill fs-6 w-50" onclick="location.href='lotteworld_notice_write.php'">새로운 공지사항</a>    
+                        </div>
+                        <div class="col-6 text-end">
+                            <input type="submit" class="btn btn-outline-primary rounded-pill fs-6 w-50" onclick="delChk()" value="선택항목 삭제">    
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
-        </form>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </body>
 </html>

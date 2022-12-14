@@ -62,6 +62,7 @@
                     <i class="bi bi-house-door fs-3"></i>
                     <!-- <span class="material-symbols-outlined fs-4">home</span> -->
                 </a></li>
+                <li class="breadcrumb-item fs-4" aria-current="page"><a href="lotteworld_service.php">소통서비스</a></li>
                 <li class="breadcrumb-item fs-4" aria-current="page"><a href="lotteworld_qna_list.php">소통서비스</a></li>
             </ol>
         </nav>   
