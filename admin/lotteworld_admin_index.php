@@ -2,6 +2,7 @@
 <?
      include "../lotteworld_db.php";
      session_start();
+     include "lotteworld_admin_common.php"
 ?>
 <html lang="en">
     <head>
@@ -36,6 +37,12 @@
             <?
             include "lotteworld_admin_side.php";
 
+            $year1 = date('Y-m-d');
+
+            $sql = "select count(*) as cnt from lotteworld_visit where year = '".$year1."' ";
+            $query = $conn->query($sql);
+            $today = mysqli_fetch_array($query);
+
             $sql = "select count(*) as cnt from lotteworld_visit";
             $query = $conn->query($sql);
             $total = mysqli_fetch_array($query);
@@ -52,19 +59,20 @@
             $query = $conn->query($sql);
             $qna = mysqli_fetch_array($query);
             ?>
+            
             <div class="col-10 mt-3 ms-1">
                 <h4 class="mb-3 pb-2 border-bottom border-2 col-10">관리자 페이지</h4>
                 <div class="row">
                     <div class="card me-3 col-3" style="width:18rem;">
                         <div class="card-body">
                             <h4 class="card-title">오늘 방문자수</h4>
-                            <p class="card-text" style="font-size:3rem">N</p>
+                            <p class="card-text" style="font-size:3rem"><?=$today['cnt']?>명</p>
                         </div>
                     </div>
                     <div class="card me-3 col-3" style="width:18rem;">
                         <div class="card-body">
                             <h4 class="card-title">누적 방문자수</h4>
-                            <p class="card-text" style="font-size:3rem"><?=$total['cnt']?></p>
+                            <p class="card-text" style="font-size:3rem"><?=$total['cnt']?>명</p>
                             <a href="#" class="btn btn-primary">타임라인 조회</a>
                         </div>
                     </div>
@@ -72,14 +80,14 @@
                         <div class="card-body">
                             <h4 class="card-title">회원 수</h4>
                             <p class="card-text" style="font-size:3rem"><?=$user['cnt']?>명</p>
-                            <a href="#" class="btn btn-primary">회원리스트 조회</a>
+                            <a href="user_dir/lotteworld_userlist.php" class="btn btn-primary">회원리스트 조회</a>
                         </div>
                     </div>
                     <div class="card me-3 col-3" style="width:18rem;">
                         <div class="card-body">
                             <h4 class="card-title">처리 안된 QnA</h4>
                             <p class="card-text" style="font-size:3rem"><?=$qna['cnt']?>개</p>
-                            <a href="#" class="btn btn-primary">QnA리스트 조회</a>
+                            <a href="faqs/lotteworld_qna_admin.php" class="btn btn-primary">QnA리스트 조회</a>
                         </div>
                     </div>
                 </div>

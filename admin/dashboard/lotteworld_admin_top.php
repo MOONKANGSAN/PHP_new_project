@@ -3,6 +3,9 @@
     <link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
     <meta name="theme-color" content="#712cf9">
+    <?
+    include "../lotteworld_admin_common.php";
+    ?>
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -69,9 +72,6 @@
       </ul>
     </div>
 </header>
-<?
-  include "lotteworld_admin_common.php";
-?>
 
 
 

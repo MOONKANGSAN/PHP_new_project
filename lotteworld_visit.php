@@ -22,6 +22,7 @@
 			// $query = "insert into tb_stat_visit (regdate, regip, referer) values('$currdt','$userip','$referer')";
             $sql = "insert into lotteworld_visit set
                                 regdate = '".$currdt."',
+								year = '".date('Y-m-d')."',
                                 regip = '".$userip."',
                                 referer = '".$referer."'
                                 ";
