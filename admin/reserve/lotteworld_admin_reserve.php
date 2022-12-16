@@ -40,11 +40,8 @@
                  }else{
                 $page = 1;
                 }
-                if($_POST['search']){
-                    $sql2 = "select count(*) as cnt from lotteworld_reserve where sale_item like '%".$_POST['search']."%'";
-                }else{
-                    $sql2 = "select count(*) as cnt from lotteworld_reserve";
-                }
+
+                $sql2 = "select count(*) as cnt from lotteworld_reserve where sale_item like '%".$_GET['search']."%'";
                 
                 $query2 = $conn->query($sql2);
                 $total_record = mysqli_fetch_array($query2);
@@ -62,11 +59,9 @@
             }
             $total_block = ceil($total_page / $block_cnt);
             $page_start = ($page - 1) * $list;
-            if($_POST['search']){
-                $sql2 = "select * from lotteworld_reserve where sale_item like '%".$_POST['search']."%' order by idx desc limit $page_start, $list";
-            }else{
-                $sql2 = "select * from lotteworld_reserve order by idx desc limit $page_start, $list";             
-            }
+            
+            $sql2 = "select * from lotteworld_reserve where sale_item like '%".$_GET['search']."%' order by idx desc limit $page_start, $list";
+        
             $query2 = $conn->query($sql2);
             ?>
             <div class="col-10 mt-3">
@@ -107,7 +102,7 @@
                                 </li>  
                             <?}else{?>
                                 <li class="page-item">
-                                <a class="page-link" href="lotteworld_admin_reserve.php?page=1" tabindex="-1" aria-disabled="true">처음</a>
+                                <a class="page-link" href="lotteworld_admin_reserve.php?page=1&search=<?=$_GET['search']?>" tabindex="-1" aria-disabled="true">처음</a>
                                 </li>   
                             <?}?>
 
@@ -119,7 +114,7 @@
                                 $pre = $page - 1;
                                 ?>
                                 <li class="page-item">
-                                <a class="page-link" href="lotteworld_admin_reserve.php?page=<?=$pre?>" tabindex="-1" aria-disabled="true">이전</a>
+                                <a class="page-link" href="lotteworld_admin_reserve.php?page=<?=$pre?>&search=<?=$_GET['search']?>" tabindex="-1" aria-disabled="true">이전</a>
                                 </li>   
                             <?}?>
 
@@ -127,7 +122,7 @@
                                     if($page == $i){?>
                                             <li class="page-item disabled"><a class="page-link"><?=$i?></a></li>
                                         <?} else {?>
-                                            <li class="page-item"><a class="page-link" href="lotteworld_admin_reserve.php?page=<?=$i?>"><?=$i?></a></li>
+                                            <li class="page-item"><a class="page-link" href="lotteworld_admin_reserve.php?page=<?=$i?>&search=<?=$_GET['search']?>"><?=$i?></a></li>
                                         <?}
                                     }?>
 
@@ -136,20 +131,20 @@
                             <?}else{
                                 $next = $page + 1;
                                 ?>
-                                <li class="page-item"><a class="page-link" href="lotteworld_admin_reserve.php?page=<?=$next?>">다음</a></li>    
+                                <li class="page-item"><a class="page-link" href="lotteworld_admin_reserve.php?page=<?=$next?>&search=<?=$_GET['search']?>&search=<?=$_GET['search']?>">다음</a></li>    
                             <?}?>
                             
                             <? if($page >= $total_page){?>
                                 <li class="page-item disabled"><a class="page-link">마지막</a></li>
                             <?}else{?>
-                                <li class="page-item"><a class="page-link" href="lotteworld_admin_reserve.php?page=<?=$total_page?>">마지막</a></li>    
+                                <li class="page-item"><a class="page-link" href="lotteworld_admin_reserve.php?page=<?=$total_page?>&search=<?=$_GET['search']?>">마지막</a></li>    
                             <?}?>
                         </ul>
                     </nav>
                     <div class="d-flex justify-content-center mt-2">
-                        <form class="col-4" action="<?= $_SERVER['PHP_SELF']?>" method="POST">
+                        <form class="col-4" action="<?= $_SERVER['PHP_SELF']?>" method="GET">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="검색어" name="search" value="<?=$_POST['search']?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <input type="text" class="form-control" placeholder="검색어" name="search" value="<?=$_GET['search']?>" aria-label="Recipient's username" aria-describedby="button-addon2">
                                 <input type="submit" value="검색" class="btn btn-outline-secondary" type="button" id="button-addon2">
                             </div>
                         </form>

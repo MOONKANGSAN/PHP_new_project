@@ -84,13 +84,13 @@
                     <td style="width:45%">
                         <?=$row['title']?>
                     </td>
-                    <td class="table-active text-center" style="width:15%">질문유형</td>
+                    <td class="table-active text-center" style="width:15%">문의유형</td>
                     <td style="width:25%">
                         <?=$sale?>    
                     </td>
                 </tr>
                 <tr>
-                    <td class="table-active text-center">질문 내용</td>
+                    <td class="table-active text-center">문의 내용</td>
                     <td class="align-top fs-6" colspan=3 style="height:300px;">
                     <?=$row['info']?>
                     </td>
@@ -111,6 +111,14 @@
                         <?}?>
                     </td>   
                 </tr>
+                <?if($row['answer']==true){?>
+                <tr>
+                    <td class="table-active text-center">답변</td>
+                    <td class="align-top fs-6" colspan=3 style="height:300px;">
+                    <?=$row['answer']?>
+                    </td>
+                </tr>
+                    <?}?>
             </table>
             <? if($row['userid']==$_SESSION['userid']&&$row['conf']==0){?>
                 <div class="position-relative">

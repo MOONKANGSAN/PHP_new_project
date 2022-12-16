@@ -42,7 +42,7 @@
                     <form action="lotteworld_carousel_form.php" class="needs-validation" enctype="multipart/form-data" method="POST">
                     <div class="input-group has-validation">
                         <div class="input-group">
-                        <input type="file" class="form-control" name="imgFile" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                        <input type="file" accept=".gif,.jpg,.png" class="form-control" name="imgFile" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                         </div>
                         <div class="invalid-feedback">
                             Please choose a username.

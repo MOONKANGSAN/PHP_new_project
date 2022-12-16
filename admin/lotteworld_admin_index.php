@@ -73,7 +73,7 @@
                         <div class="card-body">
                             <h4 class="card-title">누적 방문자수</h4>
                             <p class="card-text" style="font-size:3rem"><?=$total['cnt']?>명</p>
-                            <a href="#" class="btn btn-primary">타임라인 조회</a>
+                            <!-- <a href="#" class="btn btn-primary">타임라인 조회</a> -->
                         </div>
                     </div>
                     <div class="card me-3 col-3" style="width:18rem;">

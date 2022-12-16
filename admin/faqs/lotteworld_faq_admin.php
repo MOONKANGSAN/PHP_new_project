@@ -34,47 +34,126 @@
         <div class="d-flex justify-content-start">
             <?
             include "lotteworld_admin_side.php";
-            $sql = "select * from lotteworld_faq order by idx desc";
-            $query = $conn->query($sql);
-            ?>
+
+            if (isset($_GET["page"])){
+                $page = $_GET["page"]; //1,2,3,4,5
+                 }else{
+                $page = 1;
+                }
+
+                $sql2 = "select count(*) as cnt from lotteworld_faq where title like '%".$_GET['search']."%'";
+                $query2 = $conn->query($sql2);
+                $total_record = mysqli_fetch_array($query2);
             
-                <div class="col-10 mt-3">
-                    <h4 class="mb-3 pb-2 border-bottom border-2 col-10">관리자 페이지</h4>
-                    <h5 class="mb-1 pb-2 col-10">QnA 리스트</h5>
-                    <form action="lotteworld_faq_del.php" method="POST">
-                    <div class="col-9">
-                        <table class="table table-hover border-start border-end text-center">
-                            <thead>
-                                <tr class="fw-bold fs-5 border border-top-1 border-start-0 border-end-0 ">
-                                    <td style="width:25%">작성자</td>
-                                    <td style="width:40%">제목</td>
-                                    <td style="width:20%">작성일</td>
-                                    <td></td>
+                $list = 12; 
+                $block_cnt = 12; //페이지별 시작 번호 
+                $block_num = ceil($page / $block_cnt); 
+                $block_start = (($block_num - 1) * $block_cnt) + 1; // 블록의 시작 번호  ex) 1,6,11 ...
+                $block_end = $block_start + $block_cnt - 1; // 블록의 마지막 번호 ex) 5,10,15 ...
+
+                $total_page = ceil($total_record['cnt']/$list);
+
+                if($block_end > $total_page){ 
+                    $block_end = $total_page; 
+                }
+                $total_block = ceil($total_page / $block_cnt);
+                $page_start = ($page - 1) * $list;
+                
+                $sql2 = "select * from lotteworld_faq where title like '%".$_GET['search']."%' order by idx desc limit $page_start, $list";
+                $query2 = $conn->query($sql2);
+            ?>
+            <div class="col-10 mt-3">
+                <h4 class="mb-3 pb-2 border-bottom border-2 col-10">관리자 페이지</h4>
+                <h5 class="mb-1 pb-2 col-10">FAQs 리스트</h5>
+                
+                <div class="col-9">
+                    <table class="table table-hover border-start border-end text-center">
+                        <thead>
+                            <tr class="fw-bold fs-5 border border-top-1 border-start-0 border-end-0 ">
+                                <td style="width:25%">작성자</td>
+                                <td style="width:40%">제목</td>
+                                <td style="width:20%">작성일</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <form id="delform" action="lotteworld_faq_del.php" method="POST" class="col-12">
+                            <? for($i=0;$row=mysqli_fetch_array($query2);$i++){?>
+                                <tr>
+                                    <td onclick="location.href='lotteworld_faq_write.php?idx=<?=$row['idx']?>'"><?=$row['writer']?></td>
+                                    <td onclick="location.href='lotteworld_faq_write.php?idx=<?=$row['idx']?>'"><?=$row['title']?></td>
+                                    <td onclick="location.href='lotteworld_faq_write.php?idx=<?=$row['idx']?>'"><?=substr($row['regdate'],0,10)?></td>
+                                    <td><input type="checkbox" class="form-check-input" name="chk[]" value="<?=$row['idx']?>"></td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <? for($i=0;$row=mysqli_fetch_array($query);$i++){?>
-                                    <tr>
-                                        <td onclick="location.href='lotteworld_faq_write.php?idx=<?=$row['idx']?>'"><?=$row['writer']?></td>
-                                        <td onclick="location.href='lotteworld_faq_write.php?idx=<?=$row['idx']?>'"><?=$row['title']?></td>
-                                        <td onclick="location.href='lotteworld_faq_write.php?idx=<?=$row['idx']?>'"><?=substr($row['regdate'],0,10)?></td>
-                                        <td><input type="checkbox" class="form-check-input" name="chk[]" value="<?=$row['idx']?>"></td>
-                                    </tr>
-                                <?}?>
-                            </tbody>
-                        </table>  
-                    </div>
-                    <div class="col-9 row">
-                        <div class="col-6 text-start">
-                            <button class="btn btn-outline-primary rounded-pill fs-6 w-50" onclick="location.href='lotteworld_faq_write.php'">새로운 FAQ 작성</button>    
+                            <?}?>
+                            </form>
+                        </tbody>
+                    </table> 
+                    <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <? if($page <= 1){?>
+                            <li class="page-item disabled">
+                            <a class="page-link" tabindex="-1" aria-disabled="true">처음</a>
+                            </li>  
+                        <?}else{?>
+                            <li class="page-item">
+                            <a class="page-link" href="lotteworld_faq_admin.php?page=1&search=<?=$_GET['search']?>" tabindex="-1" aria-disabled="true">처음</a>
+                            </li>   
+                        <?}?>
+
+                        <? if($page <= 1){?>
+                            <li class="page-item disabled">
+                            <a class="page-link" tabindex="-1" aria-disabled="true">이전</a>
+                            </li>  
+                        <?}else{
+                            $pre = $page - 1;
+                            ?>
+                            <li class="page-item">
+                            <a class="page-link" href="lotteworld_faq_admin.php?page=<?=$pre?>&search=<?=$_GET['search']?>" tabindex="-1" aria-disabled="true">이전</a>
+                            </li>   
+                        <?}?>
+
+                        <? for($i = $block_start; $i <= $block_end; $i++){
+                                if($page == $i){?>
+                                        <li class="page-item disabled"><a class="page-link"><?=$i?></a></li>
+                                    <?} else {?>
+                                        <li class="page-item"><a class="page-link" href="lotteworld_faq_admin.php?page=<?=$i?>&search=<?=$_GET['search']?>"><?=$i?></a></li>
+                                    <?}
+                                }?>
+
+                        <? if($page >= $total_page){?>
+                            <li class="page-item disabled"><a class="page-link">다음</a></li>
+                        <?}else{
+                            $next = $page + 1;
+                            ?>
+                            <li class="page-item"><a class="page-link" href="lotteworld_faq_admin.php?page=<?=$next?>&search=<?=$_GET['search']?>">다음</a></li>    
+                        <?}?>
+                        
+                        <? if($page >= $total_page){?>
+                            <li class="page-item disabled"><a class="page-link">마지막</a></li>
+                        <?}else{?>
+                            <li class="page-item"><a class="page-link" href="lotteworld_faq_admin.php?page=<?=$total_page?>&search=<?=$_GET['search']?>">마지막</a></li>    
+                        <?}?>
+                    </ul>
+                </nav>
+                <div class="d-flex justify-content-center mt-2">
+                    <form class="col-4" id="searchform" action="<?= $_SERVER['PHP_SELF']?>" method="GET">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="제목 검색어" name="search" value="<?=$_GET['search']?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <input type="submit" formaction="<?= $_SERVER['PHP_SELF']?>" value="검색" class="btn btn-outline-secondary" type="button" id="button-addon2">
                         </div>
-                        <div class="col-6 text-end">
-                            <input type="submit" class="btn btn-outline-primary rounded-pill fs-6 w-50" onclick="delChk()" value="선택항목 삭제">    
-                        </div>
-                    </div>
                     </form>
                 </div>
-            
+                </div>
+                <div class="col-9 row">
+                    <div class="col-6 text-start">
+                        <a class="btn btn-outline-primary rounded-pill fs-6 w-50" onclick="location.href='lotteworld_faq_write.php'">새로운 FAQ 작성</a>    
+                    </div>
+                    <div class="col-6 text-end">
+                        <button type="submit" form="delform" class="btn btn-outline-primary rounded-pill fs-6 w-50" onclick="delChk()">선택항목 삭제</button>    
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </body>

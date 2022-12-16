@@ -54,7 +54,7 @@
                             <td class="border-end text-center align-middle" style="background-color:#F8F8F8">사진</td>
                             <td>
                             <div class="input-group">
-                                <input type="file" name="imgFile" class="form-control" id="inputGroupFile02" required >
+                                <input type="file" name="imgFile" class="form-control" id="inputGroupFile02" accept=".gif,.jpg,.png" required >
                             </div>
                             </td>
                         </tr>

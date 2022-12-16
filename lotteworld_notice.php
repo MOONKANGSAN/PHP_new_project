@@ -44,6 +44,40 @@
                                   lotte_userinfo as lu
                                   where ln.user = lu.userid order by notice_idx desc";
             $query = $conn->query($sql);
+
+            if (isset($_GET["page"])){
+                $page = $_GET["page"]; //1,2,3,4,5
+                 }else{
+                $page = 1;
+                }
+
+                $sql2 = "select count(*) as cnt from lotteworld_notice as ln,
+                                                     lotte_userinfo as lu
+                                                     where ln.user = lu.userid and 
+                                                     ln.notice_title like '%".$_GET['search']."%'";
+                $query2 = $conn->query($sql2);
+                $total_record = mysqli_fetch_array($query2);
+            
+                $list = 12; 
+                $block_cnt = 12; //페이지별 시작 번호 
+                $block_num = ceil($page / $block_cnt); 
+                $block_start = (($block_num - 1) * $block_cnt) + 1; // 블록의 시작 번호  ex) 1,6,11 ...
+                $block_end = $block_start + $block_cnt - 1; // 블록의 마지막 번호 ex) 5,10,15 ...
+
+                $total_page = ceil($total_record['cnt']/$list);
+
+                if($block_end > $total_page){ 
+                    $block_end = $total_page; 
+                }
+                $total_block = ceil($total_page / $block_cnt);
+                $page_start = ($page - 1) * $list;
+                
+                $sql2 = "select * from lotteworld_notice as ln,
+                                    lotte_userinfo as lu
+                                    where ln.user = lu.userid and 
+                                    ln.notice_title like '%".$_GET['search']."%' 
+                                    order by ln.notice_idx desc limit $page_start, $list";
+                $query2 = $conn->query($sql2);
         ?>
         <hr class="border shadow-sm" style="color:#F8F8F8">
            <!--상단 네비게이션 바-->
@@ -69,7 +103,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <? for($i=0;$row=mysqli_fetch_array($query);$i++){?>
+                            <? for($i=0;$row=mysqli_fetch_array($query2);$i++){?>
                                 <tr onclick="location.href='lotteworld_notice_view.php?idx=<?=$row['notice_idx']?>'">
                                     <td><?=$i+1?></td>
                                     <td><?=$row['notice_title']?></td>
@@ -79,6 +113,60 @@
                             <?}?>
                     </tbody>
                 </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <? if($page <= 1){?>
+                            <li class="page-item disabled">
+                            <a class="page-link" tabindex="-1" aria-disabled="true">처음</a>
+                            </li>  
+                        <?}else{?>
+                            <li class="page-item">
+                            <a class="page-link" href="lotteworld_notice.php?page=1&search=<?=$_GET['search']?>" tabindex="-1" aria-disabled="true">처음</a>
+                            </li>   
+                        <?}?>
+                        <? if($page <= 1){?>
+                            <li class="page-item disabled">
+                            <a class="page-link" tabindex="-1" aria-disabled="true">이전</a>
+                            </li>  
+                        <?}else{
+                            $pre = $page - 1;
+                            ?>
+                            <li class="page-item">
+                            <a class="page-link" href="lotteworld_notice.php?page=<?=$pre?>&search=<?=$_GET['search']?>" tabindex="-1" aria-disabled="true">이전</a>
+                            </li>   
+                        <?}?>
+
+                        <? for($i = $block_start; $i <= $block_end; $i++){
+                                if($page == $i){?>
+                                        <li class="page-item disabled"><a class="page-link"><?=$i?></a></li>
+                                    <?} else {?>
+                                        <li class="page-item"><a class="page-link" href="lotteworld_notice.php?page=<?=$i?>&search=<?=$_GET['search']?>"><?=$i?></a></li>
+                                    <?}
+                                }?>
+
+                        <? if($page >= $total_page){?>
+                            <li class="page-item disabled"><a class="page-link">다음</a></li>
+                        <?}else{
+                            $next = $page + 1;
+                            ?>
+                            <li class="page-item"><a class="page-link" href="lotteworld_notice.php?page=<?=$next?>&search=<?=$_GET['search']?>">다음</a></li>    
+                        <?}?>
+                        
+                        <? if($page >= $total_page){?>
+                            <li class="page-item disabled"><a class="page-link">마지막</a></li>
+                        <?}else{?>
+                            <li class="page-item"><a class="page-link" href="lotteworld_notice.php?page=<?=$total_page?>&search=<?=$_GET['search']?>">마지막</a></li>    
+                        <?}?>
+                    </ul>
+                </nav>
+                <div class="d-flex justify-content-center mt-2">
+                    <form class="col-4" id="searchform" action="<?= $_SERVER['PHP_SELF']?>" method="GET">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="제목 검색어" name="search" value="<?=$_GET['search']?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <input type="submit" formaction="<?= $_SERVER['PHP_SELF']?>" value="검색" class="btn btn-outline-secondary" type="button" id="button-addon2">
+                        </div>
+                    </form>
+                </div>
             <div class="container col-12 justify-content-center text-center">
             <br><br>
             </div>

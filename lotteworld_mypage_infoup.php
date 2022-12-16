@@ -96,7 +96,7 @@
             <div>
                 <label for="name">프로필 사진</label>
                 <div class="input-group mb-3 round-secondary">
-                    <input type="file" class="form-control" id="inputGroupFile04" name="profile" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                    <input type="file" class="form-control" id="inputGroupFile04" name="profile" aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept=".gif,.jpg,.png">
                     <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">조회</button>
                 </div>       
             </div>

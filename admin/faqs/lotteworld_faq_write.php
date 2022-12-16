@@ -37,7 +37,7 @@
             ?>
             <div class="col-10 mt-3">
                 <h4 class="mb-3 pb-2 border-bottom border-2 col-10">관리자 페이지</h4>
-                <h5 class="mb-1 pb-2 col-10">QnA 리스트</h5>
+                <h5 class="mb-1 pb-2 col-10">FAQ 리스트</h5>
                 <div class="col-9">
                 <form action="lotteworld_faq_form.php" method="POST">
                 <? if($_GET['idx']==true){

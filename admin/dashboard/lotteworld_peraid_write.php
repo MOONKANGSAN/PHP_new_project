@@ -68,7 +68,7 @@
                             <td class="border-end text-center align-middle" style="background-color:#F8F8F8">타이틀 사진</td>
                             <td colspan=3>
                                 <div class="input-group">
-                                    <input type="file" name="imgFile" class="form-control" id="inputGroupFile02" required>
+                                    <input type="file" accept=".gif,.jpg,.png" name="imgFile" class="form-control" id="inputGroupFile02" required>
                                 </div>
                             </td>
                         </tr>
@@ -76,7 +76,7 @@
                             <td class="border-end text-center align-middle border-bottom-2" style="background-color:#F8F8F8">공연위치</td>
                             <td class="border-bottom-2" colspan=3>
                                 <div class="input-group">
-                                    <input type="file" name="imgFile2" class="form-control" id="inputGroupFile02" required>
+                                    <input type="file" accept=".gif,.jpg,.png" name="imgFile2" class="form-control" id="inputGroupFile02" required>
                                 </div>
                             </td>
                         </tr>

@@ -34,8 +34,33 @@
         <div class="d-flex justify-content-start">
             <?
             include "lotteworld_admin_side.php";
-            $sql = "select * from lotte_userinfo order by idx desc";
-            $query = $conn->query($sql);
+            
+            if (isset($_GET["page"])){
+                $page = $_GET["page"]; //1,2,3,4,5
+                 }else{
+                $page = 1;
+                }
+
+                $sql2 = "select count(*) as cnt from lotte_userinfo where username like '%".$_GET['search']."%' ";
+                $query2 = $conn->query($sql2);
+                $total_record = mysqli_fetch_array($query2);
+            
+                $list = 12; 
+                $block_cnt = 12; //페이지별 시작 번호 
+                $block_num = ceil($page / $block_cnt); 
+                $block_start = (($block_num - 1) * $block_cnt) + 1; // 블록의 시작 번호  ex) 1,6,11 ...
+                $block_end = $block_start + $block_cnt - 1; // 블록의 마지막 번호 ex) 5,10,15 ...
+
+                $total_page = ceil($total_record['cnt']/$list);
+
+                if($block_end > $total_page){ 
+                    $block_end = $total_page; 
+                }
+                $total_block = ceil($total_page / $block_cnt);
+                $page_start = ($page - 1) * $list;
+                
+                $sql2 = "select * from lotte_userinfo where username like '%".$_GET['search']."%' order by idx desc limit $page_start, $list";
+                $query2 = $conn->query($sql2);
             ?>
             <div class="col-10 mt-3">
                 <h4 class="mb-3 pb-2 border-bottom border-2 col-10">관리자 페이지</h4>
@@ -53,7 +78,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <? for($i=0;$row=mysqli_fetch_array($query);$i++){
+                            <? for($i=0;$row=mysqli_fetch_array($query2);$i++){
                                 ?>
                             <tr onclick=" window.open('lotteworld_userinfo.php?usercode=<?=$row['usercode']?>', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );">
                                 <td class="text-center"><?=$i+1?></td>
@@ -66,8 +91,62 @@
                             <?}?>
                         </tbody>
                     </table>
-                </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <? if($page <= 1){?>
+                                <li class="page-item disabled">
+                                <a class="page-link" tabindex="-1" aria-disabled="true">처음</a>
+                                </li>  
+                            <?}else{?>
+                                <li class="page-item">
+                                <a class="page-link" href="lotteworld_userlist.php?page=1&search=<?=$_GET['search']?>" tabindex="-1" aria-disabled="true">처음</a>
+                                </li>   
+                            <?}?>
 
+                            <? if($page <= 1){?>
+                                <li class="page-item disabled">
+                                <a class="page-link" tabindex="-1" aria-disabled="true">이전</a>
+                                </li>  
+                            <?}else{
+                                $pre = $page - 1;
+                                ?>
+                                <li class="page-item">
+                                <a class="page-link" href="lotteworld_userlist.php?page=<?=$pre?>&search=<?=$_GET['search']?>" tabindex="-1" aria-disabled="true">이전</a>
+                                </li>   
+                            <?}?>
+
+                            <? for($i = $block_start; $i <= $block_end; $i++){
+                                    if($page == $i){?>
+                                            <li class="page-item disabled"><a class="page-link"><?=$i?></a></li>
+                                        <?} else {?>
+                                            <li class="page-item"><a class="page-link" href="lotteworld_userlist.php?page=<?=$i?>&search=<?=$_GET['search']?>"><?=$i?></a></li>
+                                        <?}
+                                    }?>
+
+                            <? if($page >= $total_page){?>
+                                <li class="page-item disabled"><a class="page-link">다음</a></li>
+                            <?}else{
+                                $next = $page + 1;
+                                ?>
+                                <li class="page-item"><a class="page-link" href="lotteworld_userlist.php?page=<?=$next?>&search=<?=$_GET['search']?>">다음</a></li>    
+                            <?}?>
+                            
+                            <? if($page >= $total_page){?>
+                                <li class="page-item disabled"><a class="page-link">마지막</a></li>
+                            <?}else{?>
+                                <li class="page-item"><a class="page-link" href="lotteworld_userlist.php?page=<?=$total_page?>&search=<?=$_GET['search']?>">마지막</a></li>    
+                            <?}?>
+                        </ul>
+                    </nav>
+                    <div class="d-flex justify-content-center mt-2">
+                        <form class="col-4" action="<?= $_SERVER['PHP_SELF']?>" method="GET">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="검색어" name="search" value="<?=$_GET['search']?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <input type="submit" value="검색" class="btn btn-outline-secondary" type="button" id="button-addon2">
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
