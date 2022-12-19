@@ -53,7 +53,7 @@
                                 <td>작성일</td>
                                 <td>담당자</td>
                                 <td>할인율</td>
-                                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                                <td><input class="form-check-input" type="checkbox" value="" onclick="selectAll(this)" id="flexCheckDefault"></td>
                             </tr>
                         </thead>
                         <tbody>
@@ -93,5 +93,14 @@
             event.preventDefault();
             return false;
         }
-    } 
+    }
+    
+    function selectAll(selectAll)  {
+             const checkboxes 
+            = document.querySelectorAll('input[type="checkbox"]');
+  
+                checkboxes.forEach((checkbox) => {
+                checkbox.checked = selectAll.checked
+            })
+        }
 </script>

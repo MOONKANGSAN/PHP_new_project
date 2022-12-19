@@ -75,7 +75,7 @@
                                     <td>타이틀</td>
                                     <td>작성일</td>
                                     <td>작성자</td>
-                                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                                    <td><input class="form-check-input" type="checkbox" value="" id="" onclick="selectAll(this)"></td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,7 +86,7 @@
                                             <td class="text-start" onclick="location.href='lotteworld_notice_write.php?idx=<?=$row['notice_idx']?>'"><?=$row['notice_title']?></td>
                                             <td onclick="location.href='lotteworld_notice_write.php?idx=<?=$row['notice_idx']?>'"><?=substr($row['regdate'],0,10)?></td>
                                             <td onclick="location.href='lotteworld_notice_write.php?idx=<?=$row['notice_idx']?>'"><?=$row['user']?></td>
-                                            <td><input class="form-check-input" type="checkbox" name="chk[]" value="<?=$row['notice_idx']?>" id="flexCheckDefault"></td>
+                                            <td><input class="form-check-input" type="checkbox" name="chk[]" value="<?=$row['notice_idx']?>" id="notice"></td>
                                         </tr>
                                     <?}?>
                                 </form>
@@ -169,4 +169,22 @@
             return false;
         }
     } 
+
+    // function selectAll(selectAll)  {
+    //     const checkboxes 
+    //         = document.getElementsById('notice');
+        
+    //     checkboxes.forEach((checkbox) => {
+    //         checkbox.checked = selectAll.checked;
+    //         })
+    //     }
+
+        function selectAll(selectAll)  {
+             const checkboxes 
+            = document.querySelectorAll('input[type="checkbox"]');
+  
+                checkboxes.forEach((checkbox) => {
+                checkbox.checked = selectAll.checked
+            })
+        }
 </script>

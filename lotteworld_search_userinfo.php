@@ -44,12 +44,12 @@
             </div><br><br>
             <div class="container col-4 justify-content-center">
                 <form action="lotteworld_search_id.php" method="POST">
-                    <input type="text" name="username" placeholder="이름" class="form-control my-2 rounded-1 border-secondary">
-                    
-                    <input type="text" name="phone" placeholder="전화번호" class="form-control my-2 rounded-1 border-secondary">
-                    <div class="container row">
-                    <input type="text" name="secNo[]" placeholder="주민번호" class="form-control my-2 col-4 rounded-1 border-secondary">
-                    <input type="text" name="secNo[]" placeholder="주민번호" class="form-control my-2 col-4 rounded-1 border-secondary">
+                    <input type="text" name="username" placeholder="이름" class="form-control my-2 rounded-1 border-secondary" autocomplete="off">
+                    <input type="text" name="phone" placeholder="전화번호" class="form-control my-2 rounded-1 border-secondary" autocomplete="off">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control border-secondary round-start" placeholder="주민번호 앞자리" name="secNo[]" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                        <span class="input-group-text border-secondary">-</span>
+                        <input type="password" class="form-control border-secondary round-end" name="secNo[]" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                     </div>
                     <div class="row">
                         <input type="submit" class="btn btn-primary mx-3 my-2 col-5 align-item-center" style="font-weight:bold" value="아이디 조회">
@@ -57,19 +57,7 @@
                 </form>
             </div>    
         </div><br><br><br>
-        <footer id="footerText" class="container col-10 border-top my-4">
-            <div class="row">
-                <img src="lotteworld/logo3.png" alt="none image" style="width:220px;height:100px;">
-                <div class="col-8 align-self-center">
-                    부산광역시 남구 OOO로 롯데월드  |  대표 : 아무개<br>
-                    사업자등록번호 | 000-00-0001통신판매업신고번호 | 송파 제0003호전화 | 0000-2000
-                </div>
-                <div style="width:220px;height:100px;"></div>
-                <div class="col-8">상기정보는 허위 사실입니다. <br>
-                COPYRIGHT 2018 LOTTEWORLD. ALL RIGHTS RESERVED.
-                </div>
-            </div>
-        </footer>
+       <? include "lotteworld_footer.php"?>
 <!--기업정보-->        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </body>

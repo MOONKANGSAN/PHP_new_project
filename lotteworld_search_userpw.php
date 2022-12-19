@@ -18,7 +18,7 @@
             font-family: 'Noto Sans KR', sans-serif;
             color : #b8b6b6;
         }
-        .signUpText,.title,input{
+        .signUpText,.title,input,.password{
             font-family: 'Jeju Gothic', sans-serif;
         }
         .icon:hover{
@@ -44,11 +44,12 @@
             </div><br><br>
             <div class="container col-4 justify-content-center">
                 <form action="lotteworld_search_pw.php" method="POST">
-                    <input type="text" name="username" placeholder="이름" class="form-control my-2 rounded-1 border-secondary">
-                    <input type="text" name="userid" placeholder="아이디" class="form-control my-2 rounded-1 border-secondary">
-                    <div class="container row">
-                    <input type="text" name="secNo[]" placeholder="주민번호" class="form-control my-2 col-4 rounded-1 border-secondary">
-                    <input type="text" name="secNo[]" placeholder="주민번호" class="form-control my-2 col-4 rounded-1 border-secondary">
+                    <input type="text" name="username" placeholder="이름" class="form-control my-2 rounded-1 border-secondary" autocomplete="off">
+                    <input type="text" name="userid" placeholder="아이디" class="form-control my-2 rounded-1 border-secondary" autocomplete="off">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control border-secondary round-start" placeholder="주민번호" name="secNo[]" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                        <span class="input-group-text border-secondary">-</span>
+                        <input type="password" class="form-control password border-secondary round-end" name="secNo[]" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                     </div>
                     <div class="row">
                         <input type="submit" class="btn btn-primary mx-3 my-2 col-5 align-item-center" style="font-weight:bold" value="패스워드 재설정">

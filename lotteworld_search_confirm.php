@@ -18,7 +18,7 @@
             font-family: 'Noto Sans KR', sans-serif;
             color : #b8b6b6;
         }
-        .signUpText,.title,a{
+        .signUpText,.title,.btn{
             font-family: 'Jeju Gothic', sans-serif;
         }
         </style>

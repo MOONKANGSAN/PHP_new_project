@@ -51,7 +51,7 @@
                                     <td>장소</td>
                                     <td style="width:23%">기간</td>
                                     <td style="width:5%">분류</td>
-                                    <td style="width:5%"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                                    <td style="width:5%"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onclick="selectAll(this)"></td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -90,4 +90,12 @@
             return false;
         }
     } 
+    function selectAll(selectAll)  {
+             const checkboxes 
+            = document.querySelectorAll('input[type="checkbox"]');
+  
+                checkboxes.forEach((checkbox) => {
+                checkbox.checked = selectAll.checked
+            })
+        }
 </script>

@@ -45,7 +45,7 @@
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
         <h4 class="mb-3">회원가입</h4>
-        <form action="lotteworld_signup_confirm.php" id="formSign" method="POST">
+        <form action="lotteworld_signup_confirm.php" class="validation-form" novalidate id="formSign" method="POST">
             <div class="row">
                 <div class="col-6 mb-1">
                     <label for="name">이름</label>
@@ -98,7 +98,7 @@
                 <label for="nickname">E-Mail</label>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control border-secondary" name="email1" required>
-                    <span class="input-group-text">@</span>
+                    <span class="input-group-text border-secondary">@</span>
                     <input type="text" class="form-control border-secondary rounded-end" name="email2" required>
                     <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     이메일을 입력해주세요.
@@ -106,10 +106,11 @@
                 </div>
             </div>
             <div>
-                <label for="Address">주소</label>
+            
+                <label for="name">주소</label>
                 <div class="input-group mb-3 round-secondary" style="width:40%">
                     <input type="text" class="form-control rounded-start border-secondary" readonly placeholder="PostNo" name="postno" id="sample6_postcode" required>
-                    <input type="button" class="btn btn-outline-primary rounded-end" onclick="sample6_execDaumPostcode()" value="조회" >
+                    <button class="btn btn-outline-primary rounded-end" onclick="sample6_execDaumPostcode()" value="조회" >조회</button>
                     <div class="invalid-feedback">
                         우편번호를 입력해주세요.
                     </div>
@@ -152,7 +153,7 @@
           </div>
           <div class="mb-4"></div>
           <!-- <input value="가입완료" class="btn btn-primary btn-lg btn-block" type="submit" onclick="finCheck()"> -->
-          <button  class="btn btn-primary btn-lg btn-block" onclick="finCheck()">가입완료</button>
+          <button  class="btn btn-primary btn-lg btn-block">가입완료</button>
         </form>
       </div>
     </div>
