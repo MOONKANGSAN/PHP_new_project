@@ -102,7 +102,7 @@
                 </tbody>
             </table>
             <div class="container col-12 justify-content-center text-center">
-            <a href="lotteworld_amount_sale.php" class="btn btn-outline-primary mt-2 justify-content-center col-2 rounded-pill">할인 혜택 보러가기</a>
+            <button onclick="location.href='lotteworld_amount_sale.php'" class="btn btn-outline-primary mt-2 justify-content-center col-2 rounded-pill">할인 혜택 보러가기</button>
             </div><br><br>
         </div>
     

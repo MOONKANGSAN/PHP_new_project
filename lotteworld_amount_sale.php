@@ -76,7 +76,7 @@
                 <?}?>
             </div> 
             <div class="container col-12 justify-content-center text-center">
-                <a href="lottewrold_main.php" class="btn btn-outline-primary fs-4 mt-4 justify-content-center col-2 rounded-pill">HOME</a>
+                <button onclick="location.href='lottewrold_main.php'" class="btn btn-outline-primary fs-4 mt-4 justify-content-center col-2 rounded-pill">HOME</button>
             </div><br><br>
         </div>
     

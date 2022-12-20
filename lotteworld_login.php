@@ -18,7 +18,7 @@
             font-family: 'Noto Sans KR', sans-serif;
             color : #b8b6b6;
         }
-        .signUpText,.title,input{
+        .signUpText,.title,input,label{
             font-family: 'Jeju Gothic', sans-serif;
         }
         .icon:hover{
@@ -41,14 +41,16 @@
             </div>
             <div class="mx-3 my-3 signUpText"><br>
                 <h3>로그인</h3>
-                <h5 class="mx-2 my-2" style="color : grey">로그인 후 혜택을 누려보세요.</h5>
+                <h5 class="mx-2 my-2" style="color : grey">로그인 후 다양한 기능을 사용하세요.</h5>
             </div><br><br>
             <div class="container col-4 justify-content-center">
                 <form action="lotteworld_login_form.php" method="POST">
+                    <label for="userid" class="fs-5 fw-bold">ID</label>
                     <input type="text" name="userid" class="form-control my-2 rounded-1 border-secondary" autocomplete="off">
+                    <label for="userpw" class="fs-5 fw-bold">P.W.</label>
                     <input type="password" name="password" class="form-control my-2 rounded-1 border-secondary ">
                     <div class="row">
-                        <input type="submit" class="btn btn-primary bg-white mx-3 my-2" style="width:100px;color:black;font-weight:bold" value="LOGIN">
+                        <input type="submit" class="btn btn-outline-primary mx-3 my-2 fw-bold" style="width:100px;" value="LOGIN">
                         <a href="lotteworld_search.php" class="float-end col-9" style="font-weight:bold">아이디,비밀번호를 잊어버렸나요?</a>
                     </div>
                 </form>

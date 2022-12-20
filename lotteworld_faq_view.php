@@ -39,7 +39,6 @@
         include "lotteworld_db.php";
         session_start();
         include "lotteworld_topmenu.php";
-        
             $sql = "select * from lotteworld_faq where idx = '".$_GET['idx']."'";
             $query = $conn->query($sql);
             $faq = mysqli_fetch_array($query);

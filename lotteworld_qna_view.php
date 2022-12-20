@@ -44,7 +44,7 @@
             $query = $conn->query($sql);
             $row = mysqli_fetch_array($query);
 
-            if($row['open']=="open"){
+            if($row['open']=="close"){
                 if($row['userid']!=$_SESSION['userid']){
                     echo "<script>
                         alert('접근 권한이 없습니다.');
@@ -128,10 +128,10 @@
             <table class="table table-hover my-4 py-1">
                 <?  
                     $no = $_GET['idx'];
-                    $sql = "select * from lotteworld_qna where idx < $no order by idx desc limit 1";
+                    $sql = "select * from lotteworld_qna where open = 'open' and idx < $no order by idx desc limit 1";
                     $query = $conn->query($sql);
                     $izun = mysqli_fetch_array($query);
-                    $sql = "select * from lotteworld_qna where idx > $no order by idx asc limit 1";
+                    $sql = "select * from lotteworld_qna where open = 'open' and idx > $no order by idx asc limit 1";
                     $query = $conn->query($sql);
                     $daum = mysqli_fetch_array($query);
                 ?>

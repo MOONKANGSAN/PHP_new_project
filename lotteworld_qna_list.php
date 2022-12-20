@@ -46,7 +46,7 @@
             $page = 1;
             }
 
-            $sql2 = "select count(*) as cnt from lotteworld_qna where title like '%".$_GET['search']."%'";
+            $sql2 = "select count(*) as cnt from lotteworld_qna where open = 'open' and title like '%".$_GET['search']."%'";
             $query2 = $conn->query($sql2);
             $total_record = mysqli_fetch_array($query2);
         
@@ -64,7 +64,7 @@
             $total_block = ceil($total_page / $block_cnt);
             $page_start = ($page - 1) * $list;
             
-            $sql2 = "select * from lotteworld_qna where title like '%".$_GET['search']."%' order by idx desc limit $page_start, $list";
+            $sql2 = "select * from lotteworld_qna where open = 'open' and title like '%".$_GET['search']."%' order by idx desc limit $page_start, $list";
             $query2 = $conn->query($sql2);
         ?>
         <hr class="border shadow-sm" style="color:#F8F8F8">
