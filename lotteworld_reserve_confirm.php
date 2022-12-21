@@ -119,6 +119,9 @@
                     </tbody>
                 </table>
                 <div class="text-end">
+                        <input type="hidden" name="idx" value="<?=$reserve['idx']?>">
+                        <input type="submit" formaction="lotteworld_reserve_del.php" onclick="delChk()" class="btn col-4 rounded-pill btn-outline-primary" value="예매 취소">
+                   
                     <a href="lotteworld_reserve.php?reservecode=<?=$reserve['reservecode']?>" class="btn btn-outline-primary col-4 justify-content-end rounded-pill">예매내역 수정</a>
                 </div>
             </div>
@@ -131,3 +134,12 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </body>
 </html>
+
+<script>
+     function delChk(){
+                if(!confirm("정말로 삭제하시겠습니까?")){
+                    event.preventDefault();
+                    return false;
+                }
+            }
+</script>

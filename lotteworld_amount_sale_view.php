@@ -146,7 +146,7 @@
                 * 베이비(만12개월~만36개월)은 할인혜택이 적용되지 않습니다. 
             </div><br>
             <div class="container col-12 justify-content-center text-center">
-                <a href="lottewrold_main.php" class="btn btn-outline-primary fs-4 mt-4 justify-content-center col-2 rounded-pill">HOME</a>
+                <a href="lotteworld_main.php" class="btn btn-outline-primary fs-4 mt-4 justify-content-center col-2 rounded-pill">HOME</a>
             </div><br><br>
         </div>
     

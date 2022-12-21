@@ -121,8 +121,12 @@
                     <?}?>
             </table>
             <? if($row['userid']==$_SESSION['userid']&&$row['conf']==0){?>
-                <div class="position-relative">
+                <div class="position-relative row d-flex">
                     <input type="submit" onclick="chkBtn()" value="QnA 수정" class="position-absolute top-0 end-0 col-2 btn btn-outline-primary">
+                    <form action="lotteworld_qna_del.php" class="col-12" method="POST">
+                        <input type="hidden" value="<?=$row['idx']?>" name="delno">
+                        <input type="submit" onclick="delChk()" value="QnA 삭제" class="col-2 btn btn-outline-primary">
+                    </form>
                 </div><br>
             <?}?>
             <table class="table table-hover my-4 py-1">
@@ -169,6 +173,13 @@
         <script>
             function chkBtn(){
                 location.href="lotteworld_qna_write.php?idx=<?=$row['idx']?>"
+            }
+
+            function delChk(){
+                if(!confirm("정말로 삭제하시겠습니까?")){
+                    event.preventDefault();
+                    return false;
+                }
             }
         </script>
     </body>

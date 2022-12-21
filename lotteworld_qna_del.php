@@ -1,9 +1,10 @@
 <?php
+
 include "lotteworld_db.php";
 
-$idx = $_POST['idx'];
+$idx = $_POST['delno'];
 
-$sql = "delete from lotteworld_reserve where idx  = '".$idx."'";
+$sql = "delete from lotteworld_qna where idx  = '".$idx."'";
 $query = $conn->query($sql);
 
 ?>

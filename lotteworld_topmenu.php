@@ -57,9 +57,9 @@
             <?}
               }else{?>
               <ul class="nav col-3 col-md-3 justify-content-end text-end mx-4 align-middle align-items-center">
-                <li class="mx-2"><a href="lotteworld_login.php">LOGIN</a></li>
-                <li class="" >|</li>
-                <li class="mx-2"><a href="lotteworld_signup.php">SIGNUP</a></li> 
+                <li class="mx-2 user"><a href="lotteworld_login.php">LOGIN</a></li>
+                <li class="user" >|</li>
+                <li class="mx-2 user"><a href="lotteworld_signup.php">SIGNUP</a></li> 
               </ul>
         <?}?>  
     </header>
