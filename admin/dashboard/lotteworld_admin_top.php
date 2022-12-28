@@ -70,6 +70,10 @@
         <li class="nav-item"><a href="../reserve/lotteworld_admin_reserve.php" class="nav-link px-2 text-white">예매내역</a></li>
         <li class="nav-item"><a href="../faqs/lotteworld_faq_admin.php" class="nav-link px-2 text-white">FAQs</a></li>
       </ul>
+      <ul class="nav col-5 justify-content-end">
+        <li class="nav-item"><a href="../../lotteworld_main.php" class="nav-link px-2 text-white">메인페이지</a></li>
+        <li class="nav-item"><a href="../../../phpmyadmin/" class="nav-link px-2 text-white">DB조회</a></li>
+      </ul>
     </div>
 </header>
 

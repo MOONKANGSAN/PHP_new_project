@@ -59,13 +59,17 @@
   <link href="sidebars.css" rel="stylesheet">
 </head>
   <header class="px-3 bg-primary align-self-center" style="height:50px">
-    <div class="d-flex flex-wrap justify-content-between align-items-center py-1">
+    <div class="d-flex flex-wrap justify-content-start align-items-center py-1">
       <p class="col-md-2 mb-0 text-white border-white" onclick="location.href='lotteworld_admin_index.php'">LOTTEWORLD | ADMIN</p>
-      <ul class="nav col-md-10 justify-content-start">
+      <ul class="nav col-5 justify-content-start">
         <li class="nav-item"><a href="dashboard/lotteworld_peraid.php" class="nav-link px-2 text-white">이벤트 내역</a></li>
         <li class="nav-item"><a href="dashboard/lotteworld_notice.php" class="nav-link px-2 text-white">공지사항</a></li>
         <li class="nav-item"><a href="reserve/lotteworld_admin_reserve.php" class="nav-link px-2 text-white">예매내역</a></li>
         <li class="nav-item"><a href="faqs/lotteworld_faq_admin.php" class="nav-link px-2 text-white">FAQs</a></li>
+      </ul>
+      <ul class="nav col-5 justify-content-end">
+        <li class="nav-item"><a href="../lotteworld_main.php" class="nav-link px-2 text-white">메인페이지</a></li>
+        <li class="nav-item"><a href="../../phpmyadmin/" class="nav-link px-2 text-white">DB조회</a></li>
       </ul>
     </div>
 </header>
