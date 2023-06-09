@@ -5,7 +5,7 @@
    $datecode = date('YmdHis')."A";
    $year = date('Y-m-d');
 
-  session_start();
+    session_start();
 
     $sql = "select * from lotte_userinfo where userid = '".$_SESSION['userid']."'";
     $query = $conn->query($sql);

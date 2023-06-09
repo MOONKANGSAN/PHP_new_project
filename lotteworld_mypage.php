@@ -42,7 +42,7 @@
         include "lotteworld_visit.php";
         include "lotteworld_db.php";
         include "lotteworld_topmenu.php";
-        session_start();
+        session_start(); 
 
             $sql = "select * from lotte_userinfo where userid = '".$_SESSION['userid']."'";
             $query = $conn->query($sql);
